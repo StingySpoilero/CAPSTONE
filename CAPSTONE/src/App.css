@@ -1,7 +1,9 @@
 /* src/styles/App.css */
 nav {
-  background: #333;
+  background: lightgreen;
   padding: 1rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 2px;
 }
 
 nav ul {
@@ -11,10 +13,13 @@ nav ul {
 }
 
 nav a {
-  color: white;
+  color: purple;
   text-decoration: none;
 }
 
 h1, h2 {
-  color: #333;
+  color: purple;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 10px;
+  font-size: 60px;
 }

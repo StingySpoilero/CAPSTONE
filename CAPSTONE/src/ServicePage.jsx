@@ -2,7 +2,7 @@
 const AboutPage = () => {
     return (
         <div>
-            <h2>About Us</h2>
+            <h2>Services</h2>
             <p>This application helps you manage your appointments seamlessly.</p>
         </div>
     );
