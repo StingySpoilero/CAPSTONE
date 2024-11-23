@@ -3,7 +3,7 @@ const AboutPage = () => {
     return (
         <div>
             <h2>About Us</h2>
-            <p>This application helps you manage your appointments seamlessly.</p>
+            <p>Scheduling wax appointments, or any appointments has never been easier. </p>
         </div>
     );
 };

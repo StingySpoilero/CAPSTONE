@@ -2,8 +2,8 @@
 const HomePage = () => {
     return (
         <div>
-            <h1>LauraJ Thee Esti</h1>
-            <p>Schedule your appointments easily and efficiently.</p>
+            <h1>The Wax Ripper</h1>
+            <p>Schedule your wax appointments easily and efficiently.</p>
         </div>
     );
 };
