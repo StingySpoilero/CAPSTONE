@@ -2,8 +2,8 @@
 const ReviewPage = () => {
     return (
         <div>
-            <h2>User Reviews</h2>
-            <p>See what our users are saying about us!</p>
+            <h2>Client Reviews</h2>
+            <p>Check out these reviews from previous clients!</p>
         </div>
     );
 };
