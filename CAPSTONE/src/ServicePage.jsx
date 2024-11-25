@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS for the date picker
 
 // Initial service groups
 const initialServiceGroups = {
   waxing: [
-    { id: 1, name: 'Bikini Wax', duration: 30 }, // duration in minutes
+    { id: 1, name: 'Bikini Wax', duration: 30 },
     { id: 2, name: 'Leg Wax', duration: 45 },
   ],
   facials: [
@@ -16,12 +18,12 @@ const initialServiceGroups = {
   ],
 };
 
-// Generate available time slots
-const generateTimeSlots = () => {
+// Generate available time slots for a specific date
+const generateTimeSlots = (date) => {
   const slots = [];
-  const startTime = new Date();
+  const startTime = new Date(date);
   startTime.setHours(9, 0, 0); // Start at 9:00 AM
-  const endTime = new Date();
+  const endTime = new Date(date);
   endTime.setHours(18, 0, 0); // End at 6:00 PM
 
   while (startTime <= endTime) {
@@ -32,38 +34,44 @@ const generateTimeSlots = () => {
 };
 
 const ServicePage = () => {
-  const [serviceGroups] = useState(initialServiceGroups); // Keep the initial service groups
+  const [serviceGroups] = useState(initialServiceGroups);
   const [selectedService, setSelectedService] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState('');
   const [bookedTimes, setBookedTimes] = useState([]); // Track booked times
+  const [isConfirming, setIsConfirming] = useState(false); // For confirmation step
 
   const handleServiceSelect = (service) => {
     setSelectedService(service);
+    setIsConfirming(false); // Reset confirmation when selecting a new service
   };
 
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
+    setIsConfirming(true); // Prepare for confirmation step
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const duration = selectedService.duration;
-    const timeInMinutes = new Date(`1970-01-01T${selectedTime}:00`).getTime() / 60000; // Time in minutes
-    const endTime = timeInMinutes + duration;
 
     // Block the booked time slots
     const newBookedTimes = [];
-    for (let time = timeInMinutes; time < endTime; time += 30) {
-      newBookedTimes.push(new Date(time * 60000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    for (let time = new Date(selectedDate); time < new Date(selectedDate.getTime() + duration * 60000); time.setMinutes(time.getMinutes() + 30)) {
+      newBookedTimes.push(time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
     }
 
     setBookedTimes([...bookedTimes, ...newBookedTimes]);
-    alert(`Booking ${selectedService.name} at ${selectedTime}`);
+    alert(`Booking ${selectedService.name} on ${selectedDate.toLocaleDateString()} at ${selectedTime}`);
+    
+    // Reset selections
     setSelectedService(null);
     setSelectedTime('');
+    setSelectedDate(new Date());
+    setIsConfirming(false);
   };
 
-  const availableTimeSlots = generateTimeSlots().filter(time => !bookedTimes.includes(time));
+  const availableTimeSlots = generateTimeSlots(selectedDate).filter(time => !bookedTimes.includes(time));
 
   return (
     <div>
@@ -92,7 +100,14 @@ const ServicePage = () => {
 
       {selectedService && (
         <div>
-          <h3>Available Times for {selectedService.name}</h3>
+          <h3>Select a Date</h3>
+          <DatePicker 
+            selected={selectedDate} 
+            onChange={date => setSelectedDate(date)} 
+            dateFormat="MMMM d, yyyy" 
+          />
+
+          <h3>Available Times for {selectedService.name} on {selectedDate.toLocaleDateString()}</h3>
           <div>
             {availableTimeSlots.map((time) => (
               <button
@@ -111,12 +126,16 @@ const ServicePage = () => {
             ))}
           </div>
 
-          {selectedTime && (
-            <form onSubmit={handleSubmit}>
-              <button type="submit" style={{ marginTop: '10px', padding: '10px', background: 'purple', color: 'white' }}>
+          {isConfirming && (
+            <div>
+              <h3>Confirm Your Booking</h3>
+              <p>Service: {selectedService.name}</p>
+              <p>Date: {selectedDate.toLocaleDateString()}</p>
+              <p>Time: {selectedTime}</p>
+              <button onClick={handleSubmit} style={{ marginTop: '10px', padding: '10px', background: 'purple', color: 'white' }}>
                 Confirm Booking
               </button>
-            </form>
+            </div>
           )}
         </div>
       )}
