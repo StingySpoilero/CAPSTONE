@@ -32,11 +32,10 @@ const generateTimeSlots = () => {
 };
 
 const ServicePage = () => {
-  const [serviceGroups, setServiceGroups] = useState(initialServiceGroups);
+  const [serviceGroups] = useState(initialServiceGroups); // Keep the initial service groups
   const [selectedService, setSelectedService] = useState(null);
   const [selectedTime, setSelectedTime] = useState('');
   const [bookedTimes, setBookedTimes] = useState([]); // Track booked times
-  const [newService, setNewService] = useState({ name: '', duration: '', group: 'waxing' });
 
   const handleServiceSelect = (service) => {
     setSelectedService(service);
@@ -64,20 +63,6 @@ const ServicePage = () => {
     setSelectedTime('');
   };
 
-  const handleAddService = () => {
-    const newId = Date.now(); // Simple way to generate a unique ID
-    const updatedGroups = { ...serviceGroups };
-    updatedGroups[newService.group].push({ id: newId, name: newService.name, duration: Number(newService.duration) });
-    setServiceGroups(updatedGroups);
-    setNewService({ name: '', duration: '', group: 'waxing' }); // Reset form fields
-  };
-
-  const handleDeleteService = (group, id) => {
-    const updatedGroups = { ...serviceGroups };
-    updatedGroups[group] = updatedGroups[group].filter(service => service.id !== id);
-    setServiceGroups(updatedGroups);
-  };
-
   const availableTimeSlots = generateTimeSlots().filter(time => !bookedTimes.includes(time));
 
   return (
@@ -88,31 +73,18 @@ const ServicePage = () => {
           <h3>{group.charAt(0).toUpperCase() + group.slice(1)}</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {serviceGroups[group].map(service => (
-              <div key={service.id} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <button
-                  onClick={() => handleServiceSelect(service)}
-                  style={{
-                    background: selectedService?.id === service.id ? 'lightgreen' : 'white',
-                    border: '1px solid purple',
-                    padding: '10px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {service.name} - {service.duration} minutes
-                </button>
-                <button
-                  onClick={() => handleDeleteService(group, service.id)}
-                  style={{
-                    background: 'red',
-                    color: 'white',
-                    border: 'none',
-                    padding: '5px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
+              <button
+                key={service.id}
+                onClick={() => handleServiceSelect(service)}
+                style={{
+                  background: selectedService?.id === service.id ? 'lightgreen' : 'white',
+                  border: '1px solid purple',
+                  padding: '10px',
+                  cursor: 'pointer',
+                }}
+              >
+                {service.name} - {service.duration} minutes
+              </button>
             ))}
           </div>
         </div>
@@ -148,32 +120,6 @@ const ServicePage = () => {
           )}
         </div>
       )}
-
-      <h3>Add a New Service</h3>
-      <div>
-        <input 
-          type="text" 
-          placeholder="Service Name" 
-          value={newService.name} 
-          onChange={(e) => setNewService({ ...newService, name: e.target.value })} 
-        />
-        <input 
-          type="number" 
-          placeholder="Duration (minutes)" 
-          value={newService.duration} 
-          onChange={(e) => setNewService({ ...newService, duration: e.target.value })} 
-        />
-        <select 
-          value={newService.group} 
-          onChange={(e) => setNewService({ ...newService, group: e.target.value })}>
-          <option value="waxing">Waxing</option>
-          <option value="facials">Facials</option>
-          <option value="massages">Massages</option>
-        </select>
-        <button onClick={handleAddService} style={{ marginLeft: '10px' }}>
-          Add Service
-        </button>
-      </div>
     </div>
   );
 };
