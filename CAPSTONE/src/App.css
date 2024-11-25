@@ -21,13 +21,13 @@ nav ul {
 nav a {
   color: purple;
   text-decoration: none;
-  font-weight: bold; /* Optionally bolden links */
+  font-weight: lighter; /* Optionally bolden links */
 }
 
 h1, h2 {
   color: purple;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  letter-spacing: 10px; /* Add a value here if needed */
+  letter-spacing: 5px; /* Add a value here if needed */
 }
 
 h1 {
