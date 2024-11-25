@@ -1,5 +1,5 @@
 // src/pages/AboutPage.jsx
-const AboutPage = () => {
+const ServicePage = () => {
     return (
         <div>
             <h2>Services</h2>
@@ -8,4 +8,4 @@ const AboutPage = () => {
     );
 };
 
-export default AboutPage;
+export default ServicePage;

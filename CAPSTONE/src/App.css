@@ -1,26 +1,58 @@
 /* src/styles/App.css */
+
+body {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; /* Fallback font for body */
+letter-spacing: 1px;
+}
 nav {
   background: lightgreen;
   padding: 1rem;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  letter-spacing: 2px;
-  ;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   gap: 1rem;
+  margin: 0; /* Remove default margin */
 }
 
 nav a {
   color: purple;
   text-decoration: none;
+  font-weight: bold; /* Optionally bolden links */
 }
 
 h1, h2 {
   color: purple;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   letter-spacing: 10px;
+}
+
+h1 {
   font-size: 60px;
+}
+
+h2 {
+  font-size: 48px; /* Example size for h2, adjust as needed */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  nav {
+    padding: 0.5rem; /* Adjust padding on smaller screens */
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack nav items vertically */
+    gap: 0.5rem; /* Reduce gap between items */
+  }
+
+  h1 {
+    font-size: 40px; /* Reduce heading size on smaller screens */
+  }
+
+  h2 {
+    font-size: 32px; /* Reduce h2 size */
+  }
 }

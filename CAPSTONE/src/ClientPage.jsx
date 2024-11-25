@@ -1,6 +1,6 @@
 // src/pages/ClientPage.jsx
 import React, { useEffect, useState } from 'react';
-import { getClients, createClient, deleteClient } from '../api.mjs'; // Update the import statement
+import { getClients, createClient, deleteClient } from './api.mjs'; // Update the import statement
 
 const ClientPage = () => {
     const [clients, setClients] = useState([]);

@@ -1,11 +1,10 @@
-// src/App.jsx
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navigation from './Navigation';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import ServicePage from './ServicePage';
 import ReviewPage from './ReviewPage';
-import './App.css';
+import ClientPage from './ClientPage';
 
 const App = () => {
     return (
@@ -16,6 +15,7 @@ const App = () => {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/services" element={<ServicePage />} />
                 <Route path="/reviews" element={<ReviewPage />} />
+                <Route path="/clients" element={<ClientPage />} />
             </Routes>
         </Router>
     );
