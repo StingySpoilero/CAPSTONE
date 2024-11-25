@@ -3,8 +3,8 @@
 body {
   margin: 0;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; /* Fallback font for body */
-letter-spacing: 1px;
 }
+
 nav {
   background: lightgreen;
   padding: 1rem;
@@ -15,6 +15,7 @@ nav ul {
   display: flex;
   gap: 1rem;
   margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 }
 
 nav a {
@@ -26,7 +27,7 @@ nav a {
 h1, h2 {
   color: purple;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 10px; /* Add a value here if needed */
 }
 
 h1 {
