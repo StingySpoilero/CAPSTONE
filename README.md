@@ -9,7 +9,7 @@ This Booking Site Application allows users to manage client information, includi
 - **Add Clients**: Easily add new clients with their name, email, and phone number.
 - **Update Clients**: Update existing client information.
 - **Delete Clients**: Remove clients from the list.
-- **Responsive Design**: The application is designed to work on various screen sizes.
+- **Responsive Design**: The application is designed to work on various screen sizes (e.g. Smart phones, Tablets, Desktop/PCs).
 - **Book Appointments**: Clients are able to book services for apppointments by selecting a service, date and time, while also double checking their choices and confirming their booking.
 
 ## Technologies Used
