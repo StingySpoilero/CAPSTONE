@@ -36,14 +36,22 @@ const generateTimeSlots = (date) => {
 const ServicePage = () => {
   const [serviceGroups] = useState(initialServiceGroups);
   const [selectedService, setSelectedService] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState('');
   const [bookedTimes, setBookedTimes] = useState([]); // Track booked times
   const [isConfirming, setIsConfirming] = useState(false); // For confirmation step
 
   const handleServiceSelect = (service) => {
     setSelectedService(service);
-    setIsConfirming(false); // Reset confirmation when selecting a new service
+    setSelectedDate(null); // Reset date and time when selecting a new service
+    setSelectedTime('');
+    setIsConfirming(false); // Reset confirmation step
+  };
+
+  const handleDateSelect = (date) => {
+    setSelectedDate(date);
+    setSelectedTime(''); // Reset time when changing date
+    setIsConfirming(false); // Reset confirmation step
   };
 
   const handleTimeSelect = (time) => {
@@ -67,11 +75,11 @@ const ServicePage = () => {
     // Reset selections
     setSelectedService(null);
     setSelectedTime('');
-    setSelectedDate(new Date());
+    setSelectedDate(null);
     setIsConfirming(false);
   };
 
-  const availableTimeSlots = generateTimeSlots(selectedDate).filter(time => !bookedTimes.includes(time));
+  const availableTimeSlots = selectedDate ? generateTimeSlots(selectedDate).filter(time => !bookedTimes.includes(time)) : [];
 
   return (
     <div>
@@ -98,15 +106,21 @@ const ServicePage = () => {
         </div>
       ))}
 
+      {/* Date selection only appears after selecting a service */}
       {selectedService && (
         <div>
           <h3>Select a Date</h3>
           <DatePicker 
             selected={selectedDate} 
-            onChange={date => setSelectedDate(date)} 
+            onChange={handleDateSelect} 
             dateFormat="MMMM d, yyyy" 
           />
+        </div>
+      )}
 
+      {/* Time selection only appears after selecting a date */}
+      {selectedDate && (
+        <div>
           <h3>Available Times for {selectedService.name} on {selectedDate.toLocaleDateString()}</h3>
           <div>
             {availableTimeSlots.map((time) => (
@@ -125,18 +139,19 @@ const ServicePage = () => {
               </button>
             ))}
           </div>
+        </div>
+      )}
 
-          {isConfirming && (
-            <div>
-              <h3>Confirm Your Booking</h3>
-              <p>Service: {selectedService.name}</p>
-              <p>Date: {selectedDate.toLocaleDateString()}</p>
-              <p>Time: {selectedTime}</p>
-              <button onClick={handleSubmit} style={{ marginTop: '10px', padding: '10px', background: 'purple', color: 'white' }}>
-                Confirm Booking
-              </button>
-            </div>
-          )}
+      {/* Confirmation step only appears after selecting a time */}
+      {isConfirming && (
+        <div>
+          <h3>Confirm Your Booking</h3>
+          <p>Service: {selectedService.name}</p>
+          <p>Date: {selectedDate.toLocaleDateString()}</p>
+          <p>Time: {selectedTime}</p>
+          <button onClick={handleSubmit} style={{ marginTop: '10px', padding: '10px', background: 'purple', color: 'white' }}>
+            Confirm Booking
+          </button>
         </div>
       )}
     </div>
