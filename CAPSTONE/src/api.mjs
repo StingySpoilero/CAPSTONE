@@ -68,3 +68,22 @@ export const updateClient = async (id, clientData) => {
 export const deleteClient = async (id) => {
     await axios.delete(`${API_URL}/${id}`);
 };
+
+//Review Functions
+
+// src/api.mjs
+export const getReviews = async () => {
+    const response = await fetch('/api/reviews'); // Adjust the endpoint as needed
+    return response.json();
+};
+
+export const createReview = async (review) => {
+    const response = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(review),
+    });
+    return response.json();
+};
