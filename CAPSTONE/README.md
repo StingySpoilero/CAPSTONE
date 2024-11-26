@@ -23,14 +23,8 @@ This Booking Site Application allows users to manage client information, includi
 - Trying to implement a carousel of images, the carousel did not want to load properly.
 - Blocking previous dates on calendar and future dates beyond booking allowance
 
-### Prerequisites
-
-- Node.js (v14 or later)
-- npm (Node package manager)
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/client-management-app.git
+### Additions Moving Forward
+- Adding in a feature to leave a review
+- implementing a Login/Sign Up feature
+- Separating what the clients can see vs. what I, the developer/owner can see
+- 
