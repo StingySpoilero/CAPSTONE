@@ -5,7 +5,8 @@ import AboutPage from './AboutPage';
 import ServicePage from './ServicePage';
 import ReviewPage from './ReviewPage';
 import ClientPage from './ClientPage';
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 const App = () => {
     return (
         <Router>

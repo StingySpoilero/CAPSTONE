@@ -6,29 +6,32 @@ const ReviewPage = () => {
     const [reviews, setReviews] = useState([]);
     const [author, setAuthor] = useState('');
     const [content, setContent] = useState('');
-    const [isPublished, setIsPublished] = useState(true); // New state for publishing review
+    const [isPublished, setIsPublished] = useState(true);
 
     useEffect(() => {
         const fetchReviews = async () => {
             const reviewsData = await getReviews();
             setReviews(reviewsData);
         };
-
         fetchReviews();
     }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newReview = { author, content, isPublished }; // Include published status
-        const createdReview = await createReview(newReview);
-        setReviews([...reviews, createdReview]);
-        resetForm();
+        const newReview = { author, content, isPublished };
+        try {
+            const createdReview = await createReview(newReview);
+            setReviews([...reviews, createdReview]);
+            resetForm();
+        } catch (error) {
+            console.error("Error submitting review:", error);
+        }
     };
 
     const resetForm = () => {
         setAuthor('');
         setContent('');
-        setIsPublished(true); // Reset to default published status
+        setIsPublished(true);
     };
 
     return (
@@ -62,7 +65,7 @@ const ReviewPage = () => {
             </form>
 
             <ul>
-                {reviews.filter(review => review.isPublished).map(review => ( // Only show published reviews
+                {reviews.filter(review => review.isPublished).map(review => (
                     <li key={review._id}>
                         <strong>{review.author}</strong>
                         <p>{review.content}</p>

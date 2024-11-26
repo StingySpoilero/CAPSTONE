@@ -71,13 +71,15 @@ export const deleteClient = async (id) => {
 
 //Review Functions
 
-// src/api.mjs
+/// src/api.mjs
 export const getReviews = async () => {
-    const response = await fetch('/api/reviews'); // Adjust the endpoint as needed
+    const response = await fetch('/api/reviews'); // Adjust the path if necessary
+    if (!response.ok) {
+        throw new Error('Failed to fetch reviews');
+    }
     return response.json();
 };
 
-// src/api.mjs
 export const createReview = async (review) => {
     const response = await fetch('/api/reviews', {
         method: 'POST',
@@ -86,6 +88,9 @@ export const createReview = async (review) => {
         },
         body: JSON.stringify(review),
     });
+    if (!response.ok) {
+        throw new Error('Failed to create review');
+    }
     return response.json();
 };
 
