@@ -1,18 +1,25 @@
 .home-container {
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center vertically */
+    flex-direction: column; /* Stack elements vertically */
     align-items: center; /* Center horizontally */
-    height: 100vh; /* Full viewport height */
-    text-align: center; /* Center text within the container */
+    padding-top: 20px; /* Add some padding from the top */
 }
 
 .centered-title {
     font-size: 3rem; /* Adjust size as needed */
     margin: 0; /* Remove default margin */
+    text-align: center; /* Center text */
 }
 
 .centered-text {
     font-size: 1.5rem; /* Adjust size as needed */
-    margin: 10px 0 0; /* Add margin for spacing */
+    margin: 10px 0 20px; /* Margin for spacing */
+    text-align: center; /* Center text */
+}
+
+.homepage-image {
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Maximum width for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space below the image */
 }
