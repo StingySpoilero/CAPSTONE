@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Booking Site Application allows users to manage client information, including adding, updating, and deleting clients. The application is built using React and utilizes hooks for state management and side effects. Users are also able to schedule appointments, learn more about the company and check out reviews left by other clients.
+This Booking Site Application allows users to manage client information, including adding, updating, and deleting clients. The application is built using React and utilizes hooks for state management and side effects. Users are also able to schedule appointments, learn more about the company and check out reviews left by other clients. The purpose of this application is to eliminate the middle man, ensure my the client's personal information is always protected and direct access in the event that something (e.g. servers) goes down.
 
 ## Features
 
