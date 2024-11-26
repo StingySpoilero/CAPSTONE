@@ -28,3 +28,4 @@ This Booking Site Application allows users to manage client information, includi
 - implementing a Login/Sign Up feature
 - Separating what the clients can see vs. what I, the developer/owner can see
 - adding contact/location information
+- add a FAQs and Contact feature
