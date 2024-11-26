@@ -77,6 +77,7 @@ export const getReviews = async () => {
     return response.json();
 };
 
+// src/api.mjs
 export const createReview = async (review) => {
     const response = await fetch('/api/reviews', {
         method: 'POST',
@@ -87,3 +88,5 @@ export const createReview = async (review) => {
     });
     return response.json();
 };
+
+// Ensure your server-side code saves the `isPublished` status
