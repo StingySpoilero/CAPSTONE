@@ -87,14 +87,14 @@ const ServicePage = () => {
       {Object.keys(serviceGroups).map(group => (
         <div key={group}>
           <h3>{group.charAt(0).toUpperCase() + group.slice(1)}</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
             {serviceGroups[group].map(service => (
               <button
                 key={service.id}
                 onClick={() => handleServiceSelect(service)}
                 style={{
                   background: selectedService?.id === service.id ? 'lightgreen' : 'white',
-                  border: '1px solid purple',
+                  border: '3px solid purple',
                   padding: '10px',
                   cursor: 'pointer',
                 }}
