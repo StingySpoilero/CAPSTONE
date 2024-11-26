@@ -1,12 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navigation from './Navigation';
-import HomePage from './HomePage';
 import AboutPage from './AboutPage';
-import ServicePage from './ServicePage';
-import ReviewPage from './ReviewPage';
 import ClientPage from './ClientPage';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import HomePage from './HomePage';
+import ReviewPage from './ReviewPage';
+import ServicePage from './ServicePage';
 const App = () => {
     return (
         <Router>

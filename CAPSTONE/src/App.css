@@ -3,10 +3,11 @@
 body {
   margin: 0;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; /* Fallback font for body */
+background-color: thistle;
 }
 
 nav {
-  background: lightgreen;
+  background: lawngreen;
   padding: 1rem;
 }
 
@@ -65,7 +66,7 @@ form {
 }
 
 input, textarea {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     margin: 5px 0;
     border: 2px solid black;
@@ -74,10 +75,10 @@ input, textarea {
 
 button {
     padding: 10px;
-    background-color: purple;
+    background-color: lawngreen;
     color: black;
-    border: none;
-    border-radius: 5px;
+    border: 30;
+    border-radius: 50px;
     cursor: pointer;
 }
 
@@ -87,7 +88,7 @@ ul {
 }
 
 li {
-    background: lavender;
+    background: thistle;
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;

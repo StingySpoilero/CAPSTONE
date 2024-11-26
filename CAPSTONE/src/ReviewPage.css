@@ -1,0 +1,29 @@
+/* src/ReviewPage.css */
+
+.review-page {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: rosybrown ;
+}
+
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between reviews */
+}
+
+.review-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    background-color: lawngreen;
+    letter-spacing: 1px;
+}
+
+.review-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

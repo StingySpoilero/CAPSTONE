@@ -1,77 +1,41 @@
-// src/pages/ReviewPage.jsx
-import React, { useEffect, useState } from 'react';
-import { getReviews, createReview } from './api.mjs'; // Adjust the import path as needed
+// src/ReviewPage.jsx
+import React from 'react';
+import './ReviewPage.css'; // Create this CSS file for custom styles
+
+const reviews = [
+    {
+        id: 1,
+        name: "Jane Doe",
+        review: "Excellent service! I had a great experience.",
+        rating: 5,
+    },
+    {
+        id: 2,
+        name: "John Smith",
+        review: "Very professional and friendly staff.",
+        rating: 4,
+    },
+    {
+        id: 3,
+        name: "Emily Johnson",
+        review: "I loved the ambiance and the results were amazing!",
+        rating: 5,
+    },
+];
 
 const ReviewPage = () => {
-    const [reviews, setReviews] = useState([]);
-    const [author, setAuthor] = useState('');
-    const [content, setContent] = useState('');
-    const [isPublished, setIsPublished] = useState(true);
-
-    useEffect(() => {
-        const fetchReviews = async () => {
-            const reviewsData = await getReviews();
-            setReviews(reviewsData);
-        };
-        fetchReviews();
-    }, []);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const newReview = { author, content, isPublished };
-        try {
-            const createdReview = await createReview(newReview);
-            setReviews([...reviews, createdReview]);
-            resetForm();
-        } catch (error) {
-            console.error("Error submitting review:", error);
-        }
-    };
-
-    const resetForm = () => {
-        setAuthor('');
-        setContent('');
-        setIsPublished(true);
-    };
-
     return (
-        <div>
-            <h2>Client Reviews</h2>
-            <p>Check out these reviews from previous clients!</p>
-
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
-                    required
-                />
-                <textarea
-                    placeholder="Write your review here..."
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    required
-                />
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={isPublished}
-                        onChange={(e) => setIsPublished(e.target.checked)}
-                    />
-                    Publish Review
-                </label>
-                <button type="submit">Submit Review</button>
-            </form>
-
-            <ul>
-                {reviews.filter(review => review.isPublished).map(review => (
-                    <li key={review._id}>
-                        <strong>{review.author}</strong>
-                        <p>{review.content}</p>
-                    </li>
+        <div className="review-page">
+            <h2>Customer Reviews</h2>
+            <div className="review-list">
+                {reviews.map((review) => (
+                    <div key={review.id} className="review-item">
+                        <h3>{review.name}</h3>
+                        <p>{review.review}</p>
+                        <p>Rating: {review.rating} ⭐</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
