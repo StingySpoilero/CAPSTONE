@@ -1,8 +1,8 @@
-# Client Management Application
+# Booking Site Application
 
 ## Overview
 
-This Client Management Application allows users to manage client information, including adding, updating, and deleting clients. The application is built using React and utilizes hooks for state management and side effects.
+This Booking Site Application allows users to manage client information, including adding, updating, and deleting clients. The application is built using React and utilizes hooks for state management and side effects. Users are also able to schedule appointments, learn more about the company and check out reviews left by other clients.
 
 ## Features
 
@@ -10,6 +10,7 @@ This Client Management Application allows users to manage client information, in
 - **Update Clients**: Update existing client information.
 - **Delete Clients**: Remove clients from the list.
 - **Responsive Design**: The application is designed to work on various screen sizes.
+- **Book Appointments**: Clients are able to book services for apppointments by selecting a service, date and time, while also double checking their choices and confirming their booking.
 
 ## Technologies Used
 
@@ -17,7 +18,10 @@ This Client Management Application allows users to manage client information, in
 - **React Hooks**: For managing state and side effects.
 - **CSS**: For styling the application.
 
-## Getting Started
+## Issus Encountered
+
+- Trying to implement a carousel of images, the carousel did not want to load properly.
+- Blocking previous dates on calendar and future dates beyond booking allowance
 
 ### Prerequisites
 
