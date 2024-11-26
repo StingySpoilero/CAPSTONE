@@ -17,12 +17,12 @@ const AboutPage = () => {
                 a positive impact in our community and beyond.
             </p>
             <img 
-                src="./images/Image5.jpg" // Replace with your image path
+                src="./images/Image5.jpg"
                 alt="Description of About Image 5"
                 className="about-image"
             />
             <img 
-                src="./images/Image10.jpg" // Replace with your image path
+                src="./images/Image10.jpg"
                 alt="Description of About Image 2"
                 className="about-image"
             />
