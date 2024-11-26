@@ -1,12 +1,12 @@
 // src/api.mjs
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/clients'; // Your backend API URL
+const API_URL = 'http://localhost:5000/api/clients'; // backend API URL
 
 // Base options for RapidAPI
 const RAPIDAPI_OPTIONS = {
     headers: {
-        'x-rapidapi-key': 'cbebdaed5fmshcaf21c3a7030cffp1edae5jsnae30a82d0be0', // Replace with your actual key
+        'x-rapidapi-key': 'cbebdaed5fmshcaf21c3a7030cffp1edae5jsnae30a82d0be0', //API Key Inserted
         'x-rapidapi-host': 'simple-appointment-scheduling-api.p.rapidapi.com',
         'Content-Type': 'application/json'
     }

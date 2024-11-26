@@ -1,6 +1,6 @@
 // src/ReviewPage.jsx
 import React from 'react';
-import './ReviewPage.css'; // Create this CSS file for custom styles
+import './ReviewPage.css'; 
 
 const reviews = [
     {
