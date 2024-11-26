@@ -1,0 +1,26 @@
+.about-container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    padding-top: 20px; /* Add some padding from the top */
+}
+
+.centered-title {
+    font-size: 2.5rem; /* Adjust size as needed */
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center text */
+}
+
+.centered-text {
+    font-size: 1.25rem; /* Adjust size as needed */
+    margin: 10px 0 20px; /* Margin for spacing */
+    text-align: center; /* Center text */
+    max-width: 800px; /* Limit width for better readability */
+}
+
+.about-image {
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Maximum width for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space below the image */
+}
