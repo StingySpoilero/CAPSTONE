@@ -69,29 +69,3 @@ export const deleteClient = async (id) => {
     await axios.delete(`${API_URL}/${id}`);
 };
 
-//Review Functions
-
-/// src/api.mjs
-export const getReviews = async () => {
-    const response = await fetch('/api/reviews'); // Adjust the path if necessary
-    if (!response.ok) {
-        throw new Error('Failed to fetch reviews');
-    }
-    return response.json();
-};
-
-export const createReview = async (review) => {
-    const response = await fetch('/api/reviews', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(review),
-    });
-    if (!response.ok) {
-        throw new Error('Failed to create review');
-    }
-    return response.json();
-};
-
-// Ensure your server-side code saves the `isPublished` status
